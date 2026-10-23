@@ -1,0 +1,38 @@
+name: Refresh Treasury data
+
+# Re-downloads the current year's Daily Treasury Par Yield Curve Rates CSV and
+# commits it if anything changed. Treasury posts each day's curve in the late
+# afternoon ET, so this runs after 6pm ET on weekdays. No secrets needed.
+
+on:
+  schedule:
+    - cron: "30 23 * * 1-5"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Download the latest year from treasury.gov
+        run: python scripts/fetch_treasury.py --recent
+
+      - name: Commit if the data changed
+        run: |
+          git add data/treasury/*.csv
+          if git diff --cached --quiet; then
+            echo "no new Treasury data"; exit 0
+          fi
+          git add data/treasury/manifest.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898283+github-actions[bot]@users.noreply.github.com"
+          git commit -m "data: refresh Treasury yield curve rates"
+          git push

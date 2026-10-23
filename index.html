@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Yield Tracker 3000</title>
+<meta name="description" content="The U.S. Treasury yield curve for any trading day since 1990, from Treasury's official Daily Treasury Par Yield Curve Rates.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Montserrat:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./assets/css/styles.css?v=1">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23104591'/%3E%3Cpath d='M6 22c4-9 8-11 20-12' stroke='%23F9F7F5' stroke-width='3' fill='none' stroke-linecap='round'/%3E%3C/svg%3E">
+</head>
+<body>
+
+<header class="masthead">
+  <div class="masthead__bar">
+    <a class="logo" href="https://www.employamerica.org/" aria-label="Employ America">
+      <img class="logo__lockup" src="./assets/img/logo.svg" width="984" height="225" alt="Employ America">
+    </a>
+    <span class="masthead__site">Yield Tracker 3000</span>
+  </div>
+</header>
+
+<main class="wrap">
+  <div class="hero">
+    <h1 class="hero__display">Yield Tracker <em>3000</em></h1>
+    <p class="hero__lede">The U.S. Treasury yield curve for any trading day since 1990, drawn from
+      Treasury's official <a href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve" id="lede-source">Daily Treasury Par Yield Curve Rates</a>.</p>
+  </div>
+
+  <form class="controls" id="controls" aria-label="Choose a date" onsubmit="return false">
+    <div class="field">
+      <label for="year-select">Year</label>
+      <select id="year-select"></select>
+    </div>
+    <div class="field field--date">
+      <label for="date-select">Date</label>
+      <div class="stepper">
+        <button type="button" class="btn btn--icon" id="prev-day" aria-label="Previous trading day" title="Previous trading day">&#8592;</button>
+        <select id="date-select"></select>
+        <button type="button" class="btn btn--icon" id="next-day" aria-label="Next trading day" title="Next trading day">&#8594;</button>
+      </div>
+    </div>
+    <div class="field">
+      <label for="compare-select">Compare with</label>
+      <select id="compare-select">
+        <option value="">Nothing</option>
+        <option value="1w">1 week earlier</option>
+        <option value="1m">1 month earlier</option>
+        <option value="1y">1 year earlier</option>
+        <option value="5y">5 years earlier</option>
+      </select>
+    </div>
+    <div class="field">
+      <span class="field__label" id="spacing-label">Maturity spacing</span>
+      <div class="segmented" role="radiogroup" aria-labelledby="spacing-label">
+        <button type="button" role="radio" data-scale="even" aria-checked="true">Even</button>
+        <button type="button" role="radio" data-scale="time" aria-checked="false">To scale</button>
+      </div>
+    </div>
+    <button type="button" class="btn btn--latest" id="latest-btn">Latest</button>
+  </form>
+
+  <section class="card chart-card" aria-labelledby="chart-title">
+    <header class="chart-card__head">
+      <div>
+        <h2 class="chart-card__title" id="chart-title">Treasury par yield curve</h2>
+        <p class="chart-card__sub" id="chart-sub">Loading Treasury data&hellip;</p>
+      </div>
+      <ul class="legend" id="legend" hidden></ul>
+    </header>
+    <div class="chart" id="chart">
+      <svg id="chart-svg" role="img" aria-labelledby="chart-title chart-desc"><desc id="chart-desc"></desc></svg>
+      <div class="tooltip" id="tooltip" hidden></div>
+    </div>
+    <div class="tiles" id="tiles"></div>
+  </section>
+
+  <section class="card" aria-labelledby="table-title">
+    <h2 class="section-title" id="table-title">Yields by maturity</h2>
+    <div class="table-scroll">
+      <table class="yields" id="yields-table"></table>
+    </div>
+  </section>
+
+  <section class="card source" aria-labelledby="source-title">
+    <h2 class="section-title" id="source-title">Source</h2>
+    <p>U.S. Department of the Treasury, <a id="src-textview" href="https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve">Daily Treasury Par Yield Curve Rates</a>
+      (<a id="src-csv" href="#">download this year as CSV</a>).
+      Par yields are on a bond-equivalent basis, read from Treasury's yield curve fitted to closing market bid prices
+      on the most recently auctioned securities. See Treasury's
+      <a href="https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology">yield curve methodology</a>
+      and <a href="https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics">interest rate statistics</a>.</p>
+    <p class="source__status" id="data-status" role="status"></p>
+    <p class="source__note">Not every maturity exists on every date: Treasury added the 1-month in 2001, the 2-month in 2018, the 4-month in 2022 and the 1.5-month in 2025,
+      did not publish the 30-year from February 2002 to February 2006, and began the 20-year in October 1993.</p>
+  </section>
+</main>
+
+<footer class="foot">
+  <div class="wrap foot__inner">
+    <img class="logo__lockup logo__lockup--foot" src="./assets/img/logo.svg" width="984" height="225" alt="Employ America">
+    <p>Yield Tracker 3000. Data: U.S. Department of the Treasury.</p>
+  </div>
+</footer>
+
+<script src="./assets/js/app.js?v=1"></script>
+</body>
+</html>
