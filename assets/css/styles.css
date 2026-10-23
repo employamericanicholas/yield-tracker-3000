@@ -107,61 +107,61 @@ a:hover { text-decoration-thickness: 2px; }
 /* ---------- masthead (brand Blue; Warm White clears 8.6:1) ---------- */
 .masthead { background: var(--blue); color: var(--warm-white); }
 .masthead__bar {
-  max-width: var(--maxw); margin: 0 auto; padding: 14px 24px;
-  display: flex; align-items: center; gap: 18px;
+  max-width: var(--maxw); margin: 0 auto; padding: 10px 24px;
+  display: flex; align-items: center; gap: 13px;
 }
 .logo { display: flex; align-items: center; }
-.logo__lockup { display: block; height: 40px; width: auto; flex: none; }
+.logo__lockup { display: block; height: 28px; width: auto; flex: none; }
 .logo__lockup--foot { height: 30px; }
 .masthead__site {
-  font: 600 14px/1.2 var(--font-sub); letter-spacing: .02em;
-  padding-left: 18px; border-left: 1px solid rgba(249, 247, 245, .35);
+  font: 600 10px/1.2 var(--font-sub); letter-spacing: .02em;
+  padding-left: 13px; border-left: 1px solid rgba(249, 247, 245, .35);
 }
 .masthead :focus-visible { outline-color: var(--warm-white); }
 @media (max-width: 560px) {
-  .masthead__bar { padding: 12px 16px; gap: 12px; }
-  .logo__lockup { height: 30px; }
-  .masthead__site { font-size: 12.5px; padding-left: 12px; }
+  .masthead__bar { padding: 8px 16px; gap: 9px; }
+  .logo__lockup { height: 21px; }
+  .masthead__site { font-size: 9px; padding-left: 9px; }
 }
 
 /* ---------- title ---------- */
-.hero { padding: 36px 0 8px; }
+.hero { padding: 25px 0 6px; }
 .hero__display {
-  font: 700 clamp(38px, 7.4vw, 84px)/0.9 var(--font-head);
+  font: 700 clamp(27px, 5.2vw, 59px)/0.9 var(--font-head);
   letter-spacing: -.025em; text-transform: uppercase; color: var(--ink-strong);
-  margin: 0 0 14px;
+  margin: 0 0 10px;
 }
 .hero__display em { font-style: normal; color: var(--accent-legible); }
-.hero__lede { max-width: 640px; margin: 0; font-size: 18px; color: var(--ink-muted); }
+.hero__lede { max-width: 450px; margin: 0; font-size: 13px; color: var(--ink-muted); }
 
 /* ---------- controls: one row above the chart ---------- */
 .controls {
-  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 14px 18px;
-  margin: 26px 0 16px;
+  display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px 13px;
+  margin: 18px 0 11px;
 }
-.field { display: flex; flex-direction: column; gap: 5px; min-width: 0; }
+.field { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
 .field label, .field__label {
-  font: 600 11px/1.2 var(--font-sub); text-transform: uppercase; letter-spacing: .08em;
+  font: 600 9px/1.2 var(--font-sub); text-transform: uppercase; letter-spacing: .08em;
   color: var(--ink-muted);
 }
 select, .btn, .segmented button {
-  font: 400 15px/1.2 var(--font-body); color: var(--ink);
-  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 8px;
-  height: 40px; padding: 0 12px;
+  font: 400 10.5px/1.2 var(--font-body); color: var(--ink);
+  background: var(--surface); border: 1px solid var(--rule-strong); border-radius: 6px;
+  height: 28px; padding: 0 8px;
 }
 select {
-  appearance: none; -webkit-appearance: none; padding-right: 34px; cursor: pointer;
+  appearance: none; -webkit-appearance: none; padding-right: 24px; cursor: pointer;
   background-image: linear-gradient(45deg, transparent 50%, var(--ink-muted) 50%),
                     linear-gradient(135deg, var(--ink-muted) 50%, transparent 50%);
-  background-position: calc(100% - 17px) 17px, calc(100% - 12px) 17px;
-  background-size: 5px 5px; background-repeat: no-repeat;
+  background-position: calc(100% - 13px) 12px, calc(100% - 9px) 12px;
+  background-size: 4px 4px; background-repeat: no-repeat;
 }
-#date-select { min-width: 200px; }
-.stepper { display: flex; gap: 6px; }
+#date-select { min-width: 140px; }
+.stepper { display: flex; gap: 4px; }
 .btn { cursor: pointer; }
 .btn:hover:not(:disabled), select:hover { border-color: var(--ink-faint); }
 .btn:disabled { opacity: .45; cursor: default; }
-.btn--icon { width: 40px; padding: 0; font-size: 17px; }
+.btn--icon { width: 28px; padding: 0; font-size: 12px; }
 .btn--latest { font-weight: 700; color: var(--blue); border-color: var(--blue); }
 :root[data-theme="dark"] .btn--latest { color: var(--link); border-color: var(--link); }
 @media (prefers-color-scheme: dark) {
@@ -169,14 +169,14 @@ select {
 }
 .segmented { display: flex; }
 .segmented button { cursor: pointer; border-radius: 0; }
-.segmented button:first-child { border-radius: 8px 0 0 8px; }
-.segmented button:last-child { border-radius: 0 8px 8px 0; margin-left: -1px; }
+.segmented button:first-child { border-radius: 6px 0 0 6px; }
+.segmented button:last-child { border-radius: 0 6px 6px 0; margin-left: -1px; }
 .segmented button[aria-checked="true"] {
   background: var(--blue); border-color: var(--blue); color: var(--warm-white); font-weight: 700;
   position: relative;
 }
 @media (max-width: 560px) {
-  .controls { gap: 12px; }
+  .controls { gap: 8px; }
   .field--date { flex: 1 1 100%; }
   .field--date .stepper { width: 100%; }
   #date-select { flex: 1; min-width: 0; }
@@ -194,15 +194,16 @@ select {
   font: 700 19px/1.25 var(--font-head); color: var(--ink-strong); margin: 0;
 }
 .section-title { margin-bottom: 12px; }
+.chart-card__title { font-size: 13.5px; }
 .chart-card__head {
   display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-start;
-  gap: 10px 24px; margin-bottom: 8px;
+  gap: 7px 17px; margin-bottom: 6px;
 }
-.chart-card__sub { margin: 4px 0 0; font-size: 14px; color: var(--ink-muted); }
+.chart-card__sub { margin: 3px 0 0; font-size: 10px; color: var(--ink-muted); }
 
-.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px 18px; }
-.legend li { display: flex; align-items: center; gap: 8px; font-size: 14px; color: var(--ink); }
-.legend__swatch { width: 22px; height: 0; border-top: 2.5px solid; border-radius: 2px; }
+.legend { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 4px 13px; }
+.legend li { display: flex; align-items: center; gap: 6px; font-size: 10px; color: var(--ink); }
+.legend__swatch { width: 16px; height: 0; border-top: 2px solid; border-radius: 2px; }
 .legend__swatch--compare { border-top-style: dashed; }
 
 /* ---------- chart ---------- */
